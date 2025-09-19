@@ -52,25 +52,50 @@
                 </div>
             </div>
             
-            <form class="contact-form" id="contactForm">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }}" style="
+                            padding: 1rem;
+                            margin-bottom: 1rem;
+                            border-radius: 8px;
+                            border: 1px solid;
+                            {% if category == 'success' %}
+                                background-color: #d4edda;
+                                border-color: #c3e6cb;
+                                color: #155724;
+                            {% else %}
+                                background-color: #f8d7da;
+                                border-color: #f5c6cb;
+                                color: #721c24;
+                            {% endif %}
+                        ">
+                            <i class="fas {{ 'fa-check-circle' if category == 'success' else 'fa-exclamation-triangle' }}" style="margin-right: 0.5rem;"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <form class="contact-form" id="contactForm" method="POST" action="{{ url_for('contact') }}">
                 <div class="form-group">
                     <label class="form-label" for="name">Name</label>
-                    <input class="form-input" type="text" id="name" name="name" required>
+                    <input class="form-input" type="text" id="name" name="name" placeholder="Enter your full name" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="email">Email</label>
-                    <input class="form-input" type="email" id="email" name="email" required>
+                    <input class="form-input" type="email" id="email" name="email" placeholder="your.email@example.com" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="subject">Subject</label>
-                    <input class="form-input" type="text" id="subject" name="subject" required>
+                    <input class="form-input" type="text" id="subject" name="subject" placeholder="What would you like to discuss?" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="message">Message</label>
-                    <textarea class="form-textarea" id="message" name="message" rows="5" required></textarea>
+                    <textarea class="form-textarea" id="message" name="message" rows="5" placeholder="Tell me about your project, idea, or just say hello! I'd love to hear from you." required></textarea>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">

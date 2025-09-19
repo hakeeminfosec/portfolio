@@ -95,9 +95,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form handling
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        // Reset submit button state on page load (in case of redirect)
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+            submitBtn.disabled = false;
+        }
+
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             // Get form data
             const formData = new FormData(contactForm);
             const name = formData.get('name');
@@ -107,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Simple validation
             if (!name || !email || !subject || !message) {
+                e.preventDefault();
                 showNotification('Please fill in all fields', 'error');
                 return;
             }
@@ -114,23 +120,29 @@ document.addEventListener('DOMContentLoaded', function() {
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
+                e.preventDefault();
                 showNotification('Please enter a valid email address', 'error');
                 return;
             }
 
-            // Simulate form submission
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
+            // If validation passes, let the form submit normally to the server
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
 
-            setTimeout(() => {
-                showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-                contactForm.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
+            // The form will now submit to the server, and the server will handle the redirect
+        });
+
+        // Convert Flask flash messages to custom notifications and auto-hide
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+            const message = alert.textContent.trim();
+            const isSuccess = alert.classList.contains('alert-success');
+
+            // Show custom notification
+            showNotification(message, isSuccess ? 'success' : 'error');
+
+            // Hide the original alert immediately
+            alert.style.display = 'none';
         });
     }
 
