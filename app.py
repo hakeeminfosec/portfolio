@@ -3,10 +3,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
+# Environment variables are loaded directly from the platform on Render
+# load_dotenv() is only needed for local development with .env files
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-key-change-in-production')
