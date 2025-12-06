@@ -1,6 +1,27 @@
 {% extends "base.html" %}
 
-{% block title %}Projects - AbdulHakeem Shaik{% endblock %}
+{% block title %}Projects - AbdulHakeem Shaik<style>
+    .project-warning {
+        margin-top: 1rem;
+        color: #6b7280;
+        font-size: 0.875rem;
+        text-align: center;
+        padding: 0.5rem;
+    }
+</style>
+
+<script>
+    function showWarning(btn) {
+        const card = btn.closest('.project-card');
+        const warning = card.querySelector('.project-warning');
+        warning.style.display = 'block';
+        setTimeout(() => {
+            warning.style.display = 'none';
+        }, 3000);
+    }
+</script>
+{% endblock %}
+
 
 {% block content %}
 <section class="section projects">
@@ -9,7 +30,7 @@
             <h1 class="section-title">My Projects</h1>
             <p class="section-subtitle">A showcase of my work and technical expertise</p>
         </div>
-        
+
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-image">
@@ -17,7 +38,8 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">E-Commerce Platform</h3>
-                    <p class="project-description">A full-stack e-commerce solution built with React and Node.js, featuring user authentication, payment integration, and admin dashboard.</p>
+                    <p class="project-description">A full-stack e-commerce solution built with React and Node.js,
+                        featuring user authentication, payment integration, and admin dashboard.</p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">Node.js</span>
@@ -26,15 +48,16 @@
                         <span class="tech-tag">Postman</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">
+                        <a href="javascript:void(0);" class="project-link" onclick="showWarning(this)">
                             <i class="fas fa-external-link-alt"></i>
                             Live Demo
                         </a>
-                        <a href="#" class="project-link">
+                        <a href="javascript:void(0);" class="project-link" onclick="showWarning(this)">
                             <i class="fab fa-github"></i>
                             Source Code
                         </a>
                     </div>
+                    <p class="project-warning" style="display: none;">⏳ Will update project soon</p>
                 </div>
             </div>
 
@@ -44,7 +67,8 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Task Management App</h3>
-                    <p class="project-description">A responsive task management application with drag-and-drop functionality, real-time updates, and team collaboration features.</p>
+                    <p class="project-description">A responsive task management application with drag-and-drop
+                        functionality, real-time updates, and team collaboration features.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Vue.js</span>
                         <span class="tech-tag">Firebase</span>
@@ -53,15 +77,16 @@
                         <span class="tech-tag">Networking</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">
+                        <a href="javascript:void(0);" class="project-link" onclick="showWarning(this)">
                             <i class="fas fa-external-link-alt"></i>
                             Live Demo
                         </a>
-                        <a href="#" class="project-link">
+                        <a href="javascript:void(0);" class="project-link" onclick="showWarning(this)">
                             <i class="fab fa-github"></i>
                             Source Code
                         </a>
                     </div>
+                    <p class="project-warning" style="display: none;">⏳ Will update project soon</p>
                 </div>
             </div>
 
@@ -71,7 +96,8 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Data Analytics Dashboard</h3>
-                    <p class="project-description">An interactive dashboard for data visualization and analytics, featuring real-time charts, filters, and export functionality.</p>
+                    <p class="project-description">An interactive dashboard for data visualization and analytics,
+                        featuring real-time charts, filters, and export functionality.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Django</span>
@@ -80,15 +106,16 @@
                         <span class="tech-tag">AI</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">
+                        <a href="javascript:void(0);" class="project-link" onclick="showWarning(this)">
                             <i class="fas fa-external-link-alt"></i>
                             Live Demo
                         </a>
-                        <a href="#" class="project-link">
+                        <a href="javascript:void(0);" class="project-link" onclick="showWarning(this)">
                             <i class="fab fa-github"></i>
                             Source Code
                         </a>
                     </div>
+                    <p class="project-warning" style="display: none;">⏳ Will update project soon</p>
                 </div>
             </div>
 
@@ -98,7 +125,8 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">AI Chatbot</h3>
-                    <p class="project-description">An intelligent chatbot powered by machine learning, capable of natural language processing and contextual conversations.</p>
+                    <p class="project-description">An intelligent chatbot powered by machine learning, capable of
+                        natural language processing and contextual conversations.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">TensorFlow</span>
@@ -109,18 +137,39 @@
                         <span class="tech-tag">AI</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">
+                        <a href="javascript:void(0);" class="project-link" onclick="showWarning(this)">
                             <i class="fas fa-external-link-alt"></i>
                             Live Demo
                         </a>
-                        <a href="#" class="project-link">
+                        <a href="javascript:void(0);" class="project-link" onclick="showWarning(this)">
                             <i class="fab fa-github"></i>
                             Source Code
                         </a>
                     </div>
+                    <p class="project-warning" style="display: none;">⏳ Will update project soon</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<style>
+    .project-warning {
+        margin-top: 1rem;
+        color: #6b7280;
+        font-size: 0.875rem;
+        text-align: center;
+        padding: 0.5rem;
+    }
+</style>
+
+<script>
+    function showWarning(btn) {
+        const card = btn.closest('.project-card');
+        const warning = card.querySelector('.project-warning');
+        warning.style.display = 'block';
+        setTimeout(() => {
+            warning.style.display = 'none';
+        }, 3000);
+    }
+</script>
 {% endblock %}
